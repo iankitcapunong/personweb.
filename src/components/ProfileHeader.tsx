@@ -12,7 +12,7 @@ export default function ProfileHeader() {
           fill
           sizes="144px"
           priority
-          className="object-cover grayscale"
+          className="object-cover"
         />
       </div>
 

@@ -13,9 +13,9 @@ export const site = {
   messenger: "https://www.facebook.com/yayanngwapoo/",
   birthday: "October 21, 2003",
   about: [
-    "I am a dedicated and motivated professional with a strong work ethic and a passion for continuous learning. I thrive in dynamic environments and enjoy working both independently and as part of a team.",
-    "With problem-solving skills and attention to detail, I am always eager to take on new challenges and develop innovative solutions. I am highly adaptable, a quick learner, and committed to achieving excellence in everything I do.",
-    "Currently pursuing my Bachelor of Science in Information Systems at Caraga State University, Butuan City, while building landing pages, funnels and web apps for real clients.",
+    "I am a web developer and UI/UX designer focused on building clean, responsive interfaces that perform as well as they look. I handle the full delivery process — from wireframe and design through to build and deployment.",
+    "My work centres on front-end development with Vue, Next.js and modern CSS, alongside conversion-focused landing pages and sales funnels built in GoHighLevel. I pay close attention to detail, performance and the mobile experience, because that is where most projects are won or lost.",
+    "I work effectively both independently and within a team, adapt quickly to new tools and requirements, and take full ownership of what I ship. I am currently available for freelance and collaborative projects.",
   ],
   socials: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/ian-kit-capunong-80399a351/" },
@@ -28,11 +28,6 @@ export const site = {
 /** The bulleted list in the Experience card. */
 export const experience = [
   {
-    title: "BS Information Systems — 3rd Year",
-    org: "Caraga State University, Butuan City",
-    year: "2022 — Present",
-  },
-  {
     title: "GoHighLevel Developer",
     org: "Built landing pages, sales funnels and websites with lead capture forms, booking systems and chat widgets.",
     year: "2023 — 2024",
@@ -41,16 +36,6 @@ export const experience = [
     title: "Freelance Web Developer",
     org: "Responsive client websites and web apps, handled from design through deployment.",
     year: "2023 — Present",
-  },
-  {
-    title: "Conversion Optimisation",
-    org: "Optimised pages for conversion rate, mobile responsiveness and overall user experience.",
-    year: "2023 — 2024",
-  },
-  {
-    title: "HUMSS Strand",
-    org: "Hinatuan National Comprehensive High School",
-    year: "2020 — 2022",
   },
 ];
 

@@ -18,7 +18,7 @@ export default function GalleryCard() {
               alt=""
               fill
               sizes="192px"
-              className="object-cover grayscale transition-transform duration-500 hover:scale-105"
+              className="object-cover transition-transform duration-500 hover:scale-105"
             />
           </div>
         ))}
