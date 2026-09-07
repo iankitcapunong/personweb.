@@ -5,7 +5,7 @@ export type Project = {
   description: string;
   /** The live Vercel URL, e.g. "https://my-app.vercel.app". */
   url: string;
-  /** Screenshot in /public/projects (kept for reference; not shown on the tile). */
+  /** Screenshot in /public/projects, used as the tile wallpaper. */
   image?: string;
   /** Small logo in /public/projects/icons. Omit to fall back to a monogram. */
   icon?: string;

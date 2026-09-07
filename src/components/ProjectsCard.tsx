@@ -34,9 +34,25 @@ function Tile({ project, tilt }: { project: Project; tilt: string }) {
       rel="noopener noreferrer"
       title={project.description}
       style={{ ["--tilt" as string]: tilt }}
-      className="group flex rotate-[var(--tilt)] flex-col items-center rounded-2xl border border-fg/10 bg-card p-5 text-center shadow-[0_10px_28px_-16px_rgba(0,0,0,0.45)] transition-[transform,box-shadow,border-color] duration-300 hover:rotate-0 hover:border-fg/30 hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.55)]"
+      className="group relative flex rotate-[var(--tilt)] flex-col items-center overflow-hidden rounded-2xl border border-fg/10 bg-card p-5 text-center shadow-[0_10px_28px_-16px_rgba(0,0,0,0.45)] transition-[transform,box-shadow,border-color] duration-300 hover:rotate-0 hover:border-fg/30 hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.55)]"
     >
-      <span className="grid h-12 w-12 place-items-center rounded-xl border border-fg/10 bg-bg">
+      {/* The live site's screenshot, sitting behind the card as wallpaper. */}
+      {project.image && (
+        <Image
+          src={project.image}
+          alt=""
+          fill
+          sizes="(max-width: 640px) 50vw, 25vw"
+          aria-hidden
+          className="absolute inset-0 -z-10 scale-110 object-cover object-top blur-[3px] transition-[transform,filter] duration-500 group-hover:scale-[1.16] group-hover:blur-[1.5px]"
+        />
+      )}
+      <span
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-card/88 transition-colors duration-300 group-hover:bg-card/70"
+      />
+
+      <span className="grid h-12 w-12 place-items-center rounded-xl border border-fg/10 bg-bg/85 backdrop-blur-sm">
         <Logo project={project} />
       </span>
 
@@ -44,11 +60,11 @@ function Tile({ project, tilt }: { project: Project; tilt: string }) {
         {project.title}
       </h3>
 
-      <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-fg/45">
+      <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-fg/55">
         {project.label}
       </p>
 
-      <span className="mt-5 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-fg/45 transition-colors group-hover:text-fg">
+      <span className="mt-5 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-fg/55 transition-colors group-hover:text-fg">
         <span aria-hidden>⟨</span>
         Visit
         <span aria-hidden>⟩</span>
