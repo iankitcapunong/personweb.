@@ -3,71 +3,71 @@ import { projects, projectsIndexUrl, type Project } from "@/data/projects";
 import Card from "./Card";
 import Icon from "./Icon";
 
-function VercelMark({ className = "h-2 w-2" }: { className?: string }) {
+/** Slight rotations, cycled per card so the grid looks hand-scattered. */
+const TILTS = ["-2.2deg", "1.6deg", "-1.1deg", "2.1deg", "-1.7deg", "1.2deg"];
+
+function Logo({ project }: { project: Project }) {
+  if (project.icon) {
+    return (
+      <Image
+        src={project.icon}
+        alt=""
+        width={28}
+        height={28}
+        className="h-7 w-7 object-contain"
+        unoptimized
+      />
+    );
+  }
   return (
-    <svg viewBox="0 0 76 65" aria-hidden className={`${className} fill-current`}>
-      <path d="M37.59.25l36.95 64H.64l36.95-64z" />
-    </svg>
+    <span className="text-lg font-semibold tracking-tight text-fg/70">
+      {project.title.charAt(0)}
+    </span>
   );
 }
 
-function Tile({ project }: { project: Project }) {
+function Tile({ project, tilt }: { project: Project; tilt: string }) {
   return (
     <a
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col overflow-hidden rounded-xl border border-fg/15 transition-colors hover:border-fg/45"
+      title={project.description}
+      style={{ ["--tilt" as string]: tilt }}
+      className="group flex rotate-[var(--tilt)] flex-col items-center rounded-2xl border border-fg/10 bg-card p-5 text-center shadow-[0_10px_28px_-16px_rgba(0,0,0,0.45)] transition-[transform,box-shadow,border-color] duration-300 hover:rotate-0 hover:border-fg/30 hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.55)]"
     >
-      <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-fg/10 bg-tint">
-        {project.image ? (
-          <Image
-            src={project.image}
-            alt={`${project.title} screenshot`}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
-          />
-        ) : (
-          <span className="absolute inset-0 grid place-items-center font-mono text-[11px] uppercase tracking-wider text-fg/35">
-            {project.title}
-          </span>
-        )}
-        <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded border border-bg/30 bg-fg/85 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-bg">
-          <VercelMark />
-          Live
-        </span>
-      </div>
+      <span className="grid h-12 w-12 place-items-center rounded-xl border border-fg/10 bg-bg">
+        <Logo project={project} />
+      </span>
 
-      <div className="flex flex-1 flex-col p-4">
-        <div className="flex items-baseline justify-between gap-2">
-          <h3 className="text-[13.5px] font-semibold tracking-tight">
-            {project.title}
-          </h3>
-          <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-fg/40">
-            {project.year}
-          </span>
-        </div>
+      <h3 className="mt-4 text-[13.5px] font-semibold leading-snug tracking-tight">
+        {project.title}
+      </h3>
 
-        <p className="mt-1.5 flex-1 text-[12px] leading-relaxed text-fg/60">
-          {project.description}
-        </p>
+      <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-fg/45">
+        {project.label}
+      </p>
 
-        <div className="mt-3 flex items-center justify-between gap-2 border-t border-fg/10 pt-2.5">
-          <span className="truncate font-mono text-[10px] uppercase tracking-wider text-fg/40">
-            {project.category}
-          </span>
-          <span className="inline-flex shrink-0 items-center gap-1 text-[11px] font-medium opacity-0 transition-opacity group-hover:opacity-100">
-            Visit
-            <Icon name="external" className="h-3 w-3" />
-          </span>
-        </div>
-      </div>
+      <span className="mt-5 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-fg/45 transition-colors group-hover:text-fg">
+        <span aria-hidden>⟨</span>
+        Visit
+        <span aria-hidden>⟩</span>
+      </span>
     </a>
   );
 }
 
 export default function ProjectsCard() {
+  // Preserve the order of first appearance in the data file.
+  const groups: { name: string; items: Project[] }[] = [];
+  for (const project of projects) {
+    const group = groups.find((g) => g.name === project.category);
+    if (group) group.items.push(project);
+    else groups.push({ name: project.category, items: [project] });
+  }
+
+  let tilt = 0;
+
   return (
     <Card
       title="Recent Projects"
@@ -84,9 +84,22 @@ export default function ProjectsCard() {
         </a>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <Tile key={project.url} project={project} />
+      <div className="space-y-9">
+        {groups.map((group) => (
+          <div key={group.name}>
+            <h3 className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-fg/40">
+              {group.name}
+            </h3>
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+              {group.items.map((project) => (
+                <Tile
+                  key={project.url}
+                  project={project}
+                  tilt={TILTS[tilt++ % TILTS.length]}
+                />
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </Card>
