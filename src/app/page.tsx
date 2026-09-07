@@ -36,12 +36,12 @@ export default function Home() {
             <TechStackCard />
           </Reveal>
           <Reveal delay={80} className="h-full [&>section]:h-full">
-            <ProjectsCard />
+            <CertificationsCard />
           </Reveal>
         </div>
 
         <Reveal>
-          <CertificationsCard />
+          <ProjectsCard />
         </Reveal>
 
         <Reveal>

@@ -10,8 +10,10 @@ dark toggle that is a straight inversion of the same two colours.
 
 Everything lives in one file: [`src/data/projects.ts`](src/data/projects.ts).
 
-1. Deploy your project on Vercel and copy its URL.
-2. Open `src/data/projects.ts` and paste a new object at the **top** of the
+1. Deploy the project on Vercel and copy its URL.
+2. Screenshot the live site and save it to `public/projects/` (1280×800 works
+   well — the gallery crops to 16:10 from the top).
+3. Open `src/data/projects.ts` and paste a new object at the **top** of the
    `projects` array:
 
    ```ts
@@ -19,21 +21,26 @@ Everything lives in one file: [`src/data/projects.ts`](src/data/projects.ts).
      title: "My New App",
      description: "What it does, in one line.",
      url: "https://my-new-app.vercel.app",
-     repo: "https://github.com/iankitcapunong/my-new-app", // optional
-     tags: ["Next.js", "Tailwind"],
+     image: "/projects/my-new-app.jpg",
+     category: "Client Websites",
      year: "2026",
    },
    ```
 
-3. Save. The grid, the project counter in the hero, and the "Live" badge all
-   update on their own.
+4. Save. The gallery updates itself.
 
 Notes:
 
+- `image` is optional — without it the tile shows a plain label instead.
 - `repo` is optional — leave it out and the "Code" link disappears.
-- The ▲ **Live** badge appears automatically for any `*.vercel.app` or
-  `*.vercel.com` URL.
-- The whole card is clickable and opens the deployment in a new tab.
+- The whole tile links to the deployment and opens in a new tab.
+- `projectsIndexUrl` at the bottom of the file powers the "All deployments"
+  link in the card header.
+
+### Refreshing the screenshots
+
+The thumbnails are ordinary JPEGs in `public/projects/`. Replace a file with a
+newer screenshot of the same name and the gallery picks it up — no code change.
 
 ## Editing your details
 
@@ -77,9 +84,9 @@ src/
     globals.css     colour tokens + reveal animation
   components/
     ProfileHeader.tsx      photo, name, location, role
-    AboutCard.tsx          |  ExperienceCard.tsx      (row 1)
-    TechStackCard.tsx      |  ProjectsCard.tsx        (row 2)
-    CertificationsCard.tsx full width, click to open the certificate
+    AboutCard.tsx          |  ExperienceCard.tsx        (row 1)
+    TechStackCard.tsx      |  CertificationsCard.tsx    (row 2)
+    ProjectsCard.tsx       full-width screenshot gallery
     FooterCard.tsx         Goals / Social / Contact / contact methods
     GalleryCard.tsx        photo strip, hidden while empty
     Card.tsx               shared card shell
@@ -91,6 +98,7 @@ src/
     site.ts         ← everything else
 public/
   Iankit.jpg        profile photo
+  projects/         one screenshot per project in the gallery
   cert1.png, html.jpg, css.jpg, javascript.jpg   certificates
 ```
 
