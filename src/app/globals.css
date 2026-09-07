@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-page: var(--page);
+  --color-card: var(--card);
+  --color-tint: var(--tint);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+/* Two colours only. Everything else is one of them at reduced opacity,
+   or a neutral grey mixed from them — no hue is ever introduced. */
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --page: #f4f4f4; /* page behind the cards */
+  --card: #ffffff; /* default card */
+  --tint: #ebebeb; /* washed card, for alternating blocks */
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #000000;
+  --fg: #ffffff;
+  --page: #000000;
+  --card: #0b0b0b;
+  --tint: #141414;
+  color-scheme: dark;
+}
+
+* {
+  border-color: color-mix(in oklab, var(--fg) 14%, transparent);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--page);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
