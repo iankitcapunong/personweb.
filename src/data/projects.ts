@@ -42,6 +42,17 @@ export type Project = {
  */
 export const projects: Project[] = [
   {
+    title: "OnboardLayer",
+    label: "Onboarding System",
+    description:
+      "Client onboarding system that interviews clients, captures every detail, and generates marketing assets — email copy, ad copy and landing pages.",
+    url: "https://onboardlayer.com/",
+    image: "/projects/onboardlayer.jpg",
+    icon: "/projects/icons/onboardlayer.ico",
+    category: "AI Tools & Products",
+    year: "2026",
+  },
+  {
     title: "3DVISIONZ",
     label: "Funnel Builder",
     description: "AI sales funnel builder for generating and launching funnels.",
