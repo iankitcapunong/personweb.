@@ -9,9 +9,6 @@ export const site = {
   /** Drop a resume.pdf into /public and set this to "/resume.pdf" to show the button. */
   resumeUrl: "",
   email: "yayan.cap12@gmail.com",
-  phone: "+63 946 025 6710",
-  messenger: "https://www.facebook.com/yayanngwapoo/",
-  birthday: "October 21, 2003",
   about: [
     "I am a web developer and UI/UX designer focused on building clean, responsive interfaces that perform as well as they look. I handle the full delivery process — from wireframe and design through to build and deployment.",
     "My work centres on front-end development with Vue, Next.js and modern CSS, alongside conversion-focused landing pages and sales funnels built in GoHighLevel. I pay close attention to detail, performance and the mobile experience, because that is where most projects are won or lost.",
@@ -59,14 +56,6 @@ export const certifications = [
   { name: "HTML Essentials", issuer: "Certification", year: "2023", image: "/html.jpg" },
   { name: "CSS Essentials", issuer: "Certification", year: "2023", image: "/css.jpg" },
   { name: "JavaScript Essentials", issuer: "Certification", year: "2023", image: "/javascript.jpg" },
-];
-
-/** The pill list in the footer. */
-export const goals = [
-  "Become a professional full-stack web developer.",
-  "Master modern frameworks such as React and Next.js.",
-  "Build real-world projects for clients and gain freelance experience.",
-  "Continuously improve UI/UX design skills.",
 ];
 
 /**
