@@ -2,6 +2,7 @@ import Image from "next/image";
 import { projects, projectsIndexUrl, type Project } from "@/data/projects";
 import Card from "./Card";
 import Icon from "./Icon";
+import Reveal from "./Reveal";
 
 /** Slight rotations, cycled per card so the grid looks hand-scattered. */
 const TILTS = ["-2.2deg", "1.6deg", "-1.1deg", "2.1deg", "-1.7deg", "1.2deg"];
@@ -107,12 +108,17 @@ export default function ProjectsCard() {
               {group.name}
             </h3>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-              {group.items.map((project) => (
-                <Tile
+              {group.items.map((project, index) => (
+                <Reveal
                   key={project.url}
-                  project={project}
-                  tilt={TILTS[tilt++ % TILTS.length]}
-                />
+                  delay={(index % 4) * 70}
+                  className="h-full [&>a]:h-full"
+                >
+                  <Tile
+                    project={project}
+                    tilt={TILTS[tilt++ % TILTS.length]}
+                  />
+                </Reveal>
               ))}
             </div>
           </div>

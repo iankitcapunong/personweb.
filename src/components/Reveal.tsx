@@ -9,24 +9,21 @@ type Props = {
   className?: string;
 };
 
-/** Fades its children in once they scroll into view. */
+/** Replays the entrance animation each time its children scroll into view. */
 export default function Reveal({ children, delay = 0, className = "" }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || !("IntersectionObserver" in window)) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
+        setVisible(entry.isIntersecting);
       },
       // threshold 0 so tall blocks reveal as soon as their top edge enters.
-      { threshold: 0, rootMargin: "0px 0px -80px 0px" },
+      { threshold: 0 },
     );
 
     observer.observe(el);
@@ -36,7 +33,7 @@ export default function Reveal({ children, delay = 0, className = "" }: Props) {
   return (
     <div
       ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ animationDelay: `${delay}ms` }}
       className={`reveal ${visible ? "is-visible" : ""} ${className}`}
     >
       {children}

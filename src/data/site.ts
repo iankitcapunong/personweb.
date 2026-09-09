@@ -10,9 +10,7 @@ export const site = {
   resumeUrl: "",
   email: "yayan.cap12@gmail.com",
   about: [
-    "I am a web developer and UI/UX designer focused on building clean, responsive interfaces that perform as well as they look. I handle the full delivery process — from wireframe and design through to build and deployment.",
-    "My work centres on front-end development with Vue, Next.js and modern CSS, alongside conversion-focused landing pages and sales funnels built in GoHighLevel. I pay close attention to detail, performance and the mobile experience, because that is where most projects are won or lost.",
-    "I work effectively both independently and within a team, adapt quickly to new tools and requirements, and take full ownership of what I ship. I am currently available for freelance and collaborative projects.",
+    "I am a web developer and UI/UX designer creating responsive, user-focused websites with Vue, Next.js and GoHighLevel. I manage projects from design to deployment, with a focus on usability and performance. Available for freelance and collaborative projects.",
   ],
   socials: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/ian-kit-capunong-80399a351/" },

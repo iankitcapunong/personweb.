@@ -106,7 +106,7 @@ export const projects: Project[] = [
     description: "Chauffeur service site for the Luxury Transport client.",
     url: "https://luxuryrental.vercel.app/",
     image: "/projects/luxuryrental.jpg",
-    category: "Luxury Transport",
+    category: "Landing Page / Funnels",
     year: "2026",
   },
   {
@@ -115,7 +115,7 @@ export const projects: Project[] = [
     description: "Design variant of the Luxury Transport chauffeur service site.",
     url: "https://luxury-trans.vercel.app/",
     image: "/projects/luxury-trans.jpg",
-    category: "Luxury Transport",
+    category: "Landing Page / Funnels",
     year: "2026",
   },
   {
@@ -125,7 +125,7 @@ export const projects: Project[] = [
     url: "https://luxur-six.vercel.app/",
     image: "/projects/luxur-six.jpg",
     icon: "/projects/icons/luxur-six.svg",
-    category: "Luxury Transport",
+    category: "Landing Page / Funnels",
     year: "2026",
   },
   {
@@ -134,7 +134,7 @@ export const projects: Project[] = [
     description: "Design variant of the Luxury Transport chauffeur service site.",
     url: "https://luxury-transport-ten.vercel.app/",
     image: "/projects/luxury-ten.jpg",
-    category: "Luxury Transport",
+    category: "Landing Page / Funnels",
     year: "2026",
   },
 ];
