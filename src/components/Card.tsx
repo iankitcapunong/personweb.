@@ -16,7 +16,7 @@ type Props = {
 export default function Card({ title, icon, tinted, fill, action, className = "", children }: Props) {
   return (
     <section
-      className={`rounded-2xl border border-fg/15 p-6 sm:p-7 ${
+      className={`card-surface rounded-2xl border border-fg/15 p-6 sm:p-7 ${
         fill ? "flex flex-col" : ""
       } ${
         tinted ? "bg-tint" : "bg-card"

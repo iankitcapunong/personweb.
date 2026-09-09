@@ -14,8 +14,7 @@
     "Liberation Mono", monospace;
 }
 
-/* Two colours only. Everything else is one of them at reduced opacity,
-   or a neutral grey mixed from them — no hue is ever introduced. */
+/* Neutral page palette; technology icons add color within their badges. */
 :root {
   --bg: #ffffff;
   --fg: #000000;
@@ -59,6 +58,36 @@ body {
 :focus-visible {
   outline: 2px solid var(--fg);
   outline-offset: 2px;
+}
+
+.card-surface {
+  transition: transform 250ms ease, box-shadow 250ms ease,
+    border-color 250ms ease;
+}
+
+.card-surface:focus-within {
+  border-color: color-mix(in oklab, var(--fg) 32%, transparent);
+  box-shadow: 0 12px 32px -16px color-mix(in oklab, var(--fg) 24%, transparent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-surface:hover {
+    border-color: color-mix(in oklab, var(--fg) 32%, transparent);
+    box-shadow: 0 12px 32px -16px color-mix(in oklab, var(--fg) 24%, transparent);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .card-surface:hover:not(:has([role="dialog"])) {
+    transform: translateY(-4px);
+  }
+}
+
+/* Keep the certificate dialog positioned relative to the viewport. */
+.reveal > .card-surface:has([role="dialog"]) {
+  transform: none;
+  animation: none;
+  transition: none;
 }
 
 .reveal {
